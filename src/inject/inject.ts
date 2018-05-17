@@ -452,7 +452,7 @@ class GitLabTree {
 	let keys = Object.keys(obj);
 	let pathObj = dst;
 
-	if(keys.length > 1 && prefix !== ""){
+	if(keys.length > 1 && prefix){
 		dst[prefix] = dst[prefix] || {};
 		pathObj = dst[prefix];
 	} 
@@ -461,18 +461,11 @@ class GitLabTree {
 		val = obj[key];
 		isObj = typeof val == "object";
 		if(Object.keys(val).length > 1 && keys.length > 1 && isObj){
-			if(val && isObj){
-				this.collapse(val, pathObj, key);
-			} else {
-				pathObj[key] = val;
-			}
+			(val && isObj) ? this.collapse(val, pathObj, key) : pathObj[key] = val;
 		} else {
-
-			if(val && isObj){
-				this.collapse(val, pathObj, (!dst[prefix] && prefix)? prefix + "/" + key : key);
-			} else {
+			(val && isObj) ?
+				this.collapse(val, pathObj, (!dst[prefix] && prefix)? prefix + "/" + key : key) :
 				pathObj[key] = val;
-			}
 		}
 	});
 
@@ -510,7 +503,6 @@ class GitLabTree {
         if (typeof entry === "number") {
           const metadata = this.getMetadata(entry);
 		  let file: HTMLAnchorElement = document.createElement("a");
-		  console.log(metadata.hash)
           file.setAttribute("href", metadata.hash);
           file.classList.add("file");
 
