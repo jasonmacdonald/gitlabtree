@@ -10,18 +10,18 @@
 
 .gitlab-tree-plugin-left
 {
-    flex: 0 0 250px;
+    flex: 0 0 399px;
     border: 1px solid #e5e5e5;
     border-radius: 4px 4px 0 0;
     margin-bottom: 16px;
     margin-right: 15px;
     overflow: auto;
+    line-height: 16px;
 }
 
 .gitlab-tree-plugin-left .folder
 {
     padding-left: 20px;
-    margin-bottom: 10px;
 }
 
 .gitlab-tree-plugin-left .folder .holder
@@ -29,13 +29,15 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .gitlab-tree-plugin-left .folder .holder:before
 {
     font: normal normal normal 14px/1 FontAwesome;
     content: "\f115";
-    padding-right: 7px;
+    padding-right: 5px;
 }
 
 .gitlab-tree-plugin-left > .folder
@@ -57,8 +59,6 @@
     padding: 10px 16px;
     word-wrap: break-word;
     font-weight: bold;
-
-    margin-bottom: 15px;
 }
 
 .gitlab-tree-plugin-left > .folder > .holder:before
@@ -85,6 +85,15 @@
 .gitlab-tree-plugin-left .file
 {
     padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.gitlab-tree-plugin-left .file:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f0f6";
+    color: black;
+    padding-right: 5px;
 }
 
 .gitlab-tree-plugin-left a
@@ -95,7 +104,7 @@
 .gitlab-tree-plugin-right
 {
     flex: 0 0 1;
-    width: calc(100% - 265px);
+    width: calc(100% - 410px);
 }
 
 .gitlab-tree-plugin-file-renamed, .gitlab-tree-plugin-file-renamed:hover
