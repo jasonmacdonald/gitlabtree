@@ -452,10 +452,13 @@ class GitLabTree {
 	let keys = Object.keys(obj);
 	let pathObj = dst;
 
-	if(keys.length >= 1 && prefix){
-		dst[prefix] = dst[prefix] || {};
-		pathObj = dst[prefix];
-	} 
+	if(prefix){
+		// Aggregate full path for the leaf of the folder tree or when there are multiple items in the folder.
+		if (prefix && ((keys.length == 1 && typeof obj[keys[0]] != "object") || keys.length > 1)) {
+			dst[prefix] = dst[prefix] || {};
+			pathObj = dst[prefix];
+		}
+	}
 
 	keys.forEach(key => {
 		val = obj[key];
