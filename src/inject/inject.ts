@@ -452,7 +452,7 @@ class GitLabTree {
 	let keys = Object.keys(obj);
 	let pathObj = dst;
 
-	if(keys.length > 1 && prefix){
+	if(keys.length >= 1 && prefix){
 		dst[prefix] = dst[prefix] || {};
 		pathObj = dst[prefix];
 	} 
